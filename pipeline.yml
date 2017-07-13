@@ -1,28 +1,27 @@
 resources:
-- name: source_code
-  type: git
-  source:
-    uri: https://github.com/coxcs1/springbootapp.git
+  - name: source_code
+    type: git
+    source:
+      uri: https://github.com/coxcs1/springbootapp.git
     
-- name: deploy_cf
-  type: cf
-  source:
-    api: https://api.run.pivotal.io
-    username: coxcs1@etsu.edu
-    password: Dog.Bark1();
-    organization: coxcs1-org
-    space: development
+  - name: deploy_cf
+    type: cf
+    source:
+      api: https://api.run.pivotal.io
+      username: coxcs1@etsu.edu
+      password: Dog.Bark1();
+      organization: coxcs1-org
+      space: development
 
 jobs:
-- name: Build
+- name: deploy-to
   public: true
   plan:
-    - get: source_code
-      passed: [Unit Tests]
-      trigger: true
-    - task: Build Code
+    - {get: source_code, trigger: true}
+    - task: build
+      privileged: true
       file: source_code/build.yml
-    - put: deploy-cf
+    - put: deploy_cf
       params:
         manifest: source_code/manifest.yml
         path: artifacts/*.jar

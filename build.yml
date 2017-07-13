@@ -8,4 +8,9 @@ outputs:
 - name: artifacts
 
 run:
-  path: source_code/build.sh
+  user: root
+    path: sh
+     args:
+     cd source_code
+     gradle clean assemble
+     cp build/libs/*.jar ../artifacts/
