@@ -14,14 +14,15 @@ resources:
     space: development
 
 jobs:
-- name: deploy-to-cf-job
-  serial: true
+- name: Build
+  public: true
   plan:
-  - {get: source_code, trigger: true}
-  - task: build
-    privileged: true
-    file: source_code/build.yml
-  - put: deploy_cf
-    params:
-      manifest: source_code/manifest.yml
-      path: built-project/demo.jar
+    - get: source_code
+      passed: [Unit Tests]
+      trigger: true
+    - task: Build Code
+      file: source_code/build.yml
+    - put: deploy-cf
+      params:
+        manifest: source_code/manifest.yml
+        path: artifacts/*.jar
