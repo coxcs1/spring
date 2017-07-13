@@ -1,5 +1,5 @@
 applications:
-- name: Spring_Boot_Gradle_Test
+- name: springbootapp
   memory: 512M
   instances: 1
   random-route: true
