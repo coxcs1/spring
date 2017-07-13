@@ -10,6 +10,8 @@ outputs:
 run:
     path: sh
      args:
+     - -exc
+     - |
      cd source_code
      gradle clean assemble
      cp build/libs/*.jar ../artifacts/
