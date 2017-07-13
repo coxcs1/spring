@@ -1,22 +1,11 @@
 platform: linux
-
 image_resource:
   type: docker-image
-  source:
-    repository: gradle
-
+  source: {repository: frekele/gradle}
 inputs:
 - name: source_code
-
 outputs:
-- name: built-project
+- name: artifacts
 
 run:
-  user: root
-  path: sh
-  args:
-  - -exc
-  - |
-    cd source_code
-    cd complete
-    gradle --stacktrace build
+  path: source_code/build.sh
