@@ -20,8 +20,8 @@ jobs:
     - {get: source_code, trigger: true}
     - task: build
       privileged: true
-      file: source_code/build.yml
+      file: build.yml
     - put: deploy_cf
       params:
-        manifest: source_code/manifest.yml
+        manifest: manifest.yml
         path: artifacts/*.jar
