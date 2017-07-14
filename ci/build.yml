@@ -12,9 +12,4 @@ outputs:
  - name: artifacts
  
 run: 
- path: sh
-   args:
-   - -exc
-   - |
-   gradle --stacktrace build
-   cp build/libs/*.jar ../artifacts/
+ path:  source_code/ci/build.sh
