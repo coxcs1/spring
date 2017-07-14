@@ -3,17 +3,17 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-  repository: frekele/gradle
+   repository: frekele/gradle
   
-  inputs:
-  - name: source_code
+inputs:
+ - name: source_code
   
-  outputs:
-  - name: artifacts
-  
- run: 
+outputs:
+ - name: artifacts
+ 
+run: 
   path: sh
-  args:
+   args:
    - -exc
    - |
    gradle --stacktrace build
