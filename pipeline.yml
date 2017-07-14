@@ -14,14 +14,13 @@ resources:
       space: development
 
 jobs:
-- name: deploy-to
-  public: true
+- name: common-image-build
   plan:
-    - {get: source_code, trigger: true}
-    - task: build
-      privileged: true
-      file: build.yml
-    - put: deploy_cf
-      params:
-        manifest: manifest.yml
-        path: artifacts/*.jar
+  - get: source_code
+    trigger: true
+  - task: build
+    file: source_code/ci/build.yml
+  - put: deploy_cf
+    params:
+     manifest: source_code/ci/manifest.yml
+     path: artifacts/*.jar
