@@ -7,7 +7,6 @@ image_resource:
   
 inputs:
  - name: source_code
- - name: common-image-build
 outputs:
  - name: artifacts
  
