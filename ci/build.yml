@@ -1,0 +1,15 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source: {repository: frekele/gradle}
+  inputs:
+  - name: source_code
+  outputs:
+  - name: artifacts
+ run: 
+  path: sh
+  args:
+   - -exc
+   - |
+   gradle --stacktrace build
+   cp build/libs/*.jar ../artifacts/
