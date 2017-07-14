@@ -13,4 +13,9 @@ outputs:
  
 run:
  user: root
- path:  source_code/ci/build.sh
+  path: sh
+  args:
+  - -exc
+  - |
+  gradle --stacktrace build
+  cp build/libs/*.jar ../artifacts/
