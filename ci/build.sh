@@ -1,4 +1,4 @@
 #!/bin/sh
-chmod +x *.sh
+cd source_code
 gradle --stacktrace build
 cp build/libs/*.jar ../artifacts/
