@@ -3,7 +3,6 @@ resources:
     type: git
     source:
       uri: https://github.com/coxcs1/spring.git
-    
   - name: deploy_cf
     type: cf
     source:
@@ -12,13 +11,13 @@ resources:
       password: Dog.Bark1();
       organization: coxcs1-org
       space: development
-
 jobs:
 - name: common-image-build
+  serial: true
   plan:
-  - get: source_code
-    trigger: true
+  - get: {source_code/ci, trigger: true}
   - task: build
+    privileged: true
     file: source_code/ci/build.yml
   - put: deploy_cf
     params:
