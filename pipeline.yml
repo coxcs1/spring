@@ -1,6 +1,5 @@
----
 resources:
-- name: source_code
+- name: source-code
   type: git
   source:
     uri: https://github.com/coxcs1/spring.git
@@ -17,11 +16,11 @@ jobs:
 - name: build-cf
   serial: true
   plan:
-  - {get: source_code, trigger: true}
+  - {get: source-code, trigger: true}
   - task: build
     privileged: true
-    file: source_code/ci/build.yml
+    file: source-code/ci/build.yml
   - put: deploy-cf
     params:
-      manifest: source_code/manifest.yml
+      manifest: source-code/manifest.yml
       path: artifacts/*.jar
