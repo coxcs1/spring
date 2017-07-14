@@ -17,7 +17,7 @@ jobs:
 - name: build-cf
   serial: true
   plan:
-  - {get: source_code/ci, trigger: true}
+  - {get: source_code, trigger: true}
   - task: build
     privileged: true
     file: source_code/ci/build.yml
