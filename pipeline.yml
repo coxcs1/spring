@@ -1,8 +1,10 @@
+
+---
 resources:
-  - name: source_code
-    type: git
-    source:
-      uri: https://github.com/coxcs1/spring.git
+- name: source_code
+  type: git
+  source:
+    uri: https://github.com/coxcs1/spring.git
      
   - name: deploy_cf
     type: cf
