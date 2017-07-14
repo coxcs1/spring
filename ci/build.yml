@@ -5,7 +5,7 @@ image_resource:
   inputs:
   - name: source_code
   outputs:
-  - name: artifacts
+  - name: thingy
  run: 
   path: sh
   args:
