@@ -12,7 +12,7 @@ outputs:
  - name: artifacts
  
 run: 
-  path: sh
+ path: sh
    args:
    - -exc
    - |
