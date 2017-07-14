@@ -11,5 +11,6 @@ inputs:
 outputs:
  - name: artifacts
  
-run: 
+run:
+ user: root
  path:  source_code/ci/build.sh
