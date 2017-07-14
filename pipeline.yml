@@ -4,24 +4,24 @@ resources:
   type: git
   source:
     uri: https://github.com/coxcs1/spring.git
-- name: deploy_cf
+- name: deploy-cf
   type: cf
   source:
     api: https://api.run.pivotal.io
     username: coxcs1@etsu.edu
     password: Dog.Bark1();
-    organization: coxcs1-org
+    organization: coxcs1-organization
     space: development
     skip_cert_check: true
 jobs:
-- name: common-image-build
+- name: build-cf
   serial: true
   plan:
-  - get: {source_code/ci, trigger: true}
+  - {get: source_code/ci, trigger: true}
   - task: build
     privileged: true
     file: source_code/ci/build.yml
-  - put: deploy_cf
+  - put: deploy-cf
     params:
-     manifest: source_code/ci/manifest.yml
-     path: artifacts/*.jar
+      manifest: source_code/manifest.yml
+      path: artifacts/*.jar
